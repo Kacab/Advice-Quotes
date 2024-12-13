@@ -1,6 +1,8 @@
+
+
 const dicebut = document.querySelector('#submit')
 const forms  = document.querySelector('.forms')
-const isAdvice = false
+let  isAdvice;
 
 // function togetQuote(){
 //   const p =  document.createElement('p')
@@ -22,11 +24,20 @@ const dice = diceApi=>{
     }).then((data)=>{
         console.log(data.slip.advice)
         
-            
+        // if(!isAdvice){}
+
+        if(!isAdvice){
+            isAdvice =  document.createElement('p')
+            forms.appendChild(isAdvice)
+        }
+
+        isAdvice.innerText = data.slip.advice
+
+              
     
-        const p = document.createElement('p')
-        p.innerText = data.slip.advice
-        forms.appendChild(p)
+        
+       
+        
     }).catch((eror)=>{
         
         console.log('servers are down1',eror)
